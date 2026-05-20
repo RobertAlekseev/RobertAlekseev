@@ -1,0 +1,34 @@
+name: Deploy Jekyll to Public Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Install Dependencies & Build
+        run: |
+          gem install bundler
+          bundle install
+          bundle exec jekyll build
+
+      - name: Deploy to Public Repo
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          repository-name: RobertAlekseev/RobertAlekseev.github.io
+          branch: main
+          folder: _site
+          clean: true

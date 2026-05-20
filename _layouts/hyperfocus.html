@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="page hyperfocus-page">
+  <header class="page__header">
+    <a href="{{ '/projekte' | relative_url }}" class="back-link">← Projekte & Interessen</a>
+    <h1 class="page__title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+    <p class="page__subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+    {% if page.tags %}
+    <div class="tags">
+      {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+  <div class="page__body">
+    {{ content }}
+  </div>
+</article>

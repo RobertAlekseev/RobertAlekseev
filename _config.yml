@@ -1,0 +1,40 @@
+title: Robert Alekseev
+description: Entwickler · Fotograf · Neugieriger Mensch
+baseurl: ""
+url: "https://robertalekseev.github.io"
+author: Robert Alekseev
+email: robert.alekseev@gmail.com
+
+# Kollektionen
+collections:
+  journal:
+    output: true
+    permalink: /journal/:path/
+  hyperfocus:
+    output: true
+    permalink: /hyperfocus/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "hyperfocus"
+    values:
+      layout: "hyperfocus"
+  - scope:
+      path: ""
+      type: "journal"
+    values:
+      layout: "journal"
+
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Dateien, die nicht kopiert werden sollen
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
+  - vendor/
